@@ -92,12 +92,17 @@ void Game::loop()
 {
   while (1)
 	{
-		//snake->Draw();
-		// snake->Input();
-    guiHandler->guiInst->map = snake->Draw();
-		this->inputHandler();
-    snake->Logic();
-		guiHandler->guiInst->update();
+    if (snake->gameOver)
+      guiHandler->guiInst->glib_action = QUIT;
+    else
+    {
+  		//snake->Draw();
+  		// snake->Input();
+  		this->inputHandler();
+      snake->Logic();
+      guiHandler->guiInst->map = snake->Draw();
+  		guiHandler->guiInst->update();
+    }
 
 		switch (guiHandler->guiInst->glib_action)
 		{
@@ -133,6 +138,8 @@ void Game::loop()
 			case QUIT:
 				if (guiHandler != NULL)
 					delete guiHandler;
+        std::cout << "Score : " << snake->score << std::endl;
+        delete snake;
 				exit(0);
 				break;
 			case NONE:

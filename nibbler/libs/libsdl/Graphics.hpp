@@ -16,7 +16,7 @@
 #include "SDL.h"
 # include "IGraphics.hpp"
 
-# define REALHEIGHTMULT 50
+# define REALHEIGHTMULT 15
 # define REALWIDTHMULT 10
 
 class Graphics : public IGraphics

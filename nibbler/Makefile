@@ -47,6 +47,9 @@ $(NAME): $(OBJ)
 	@echo $<
 	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
 
+resdl:
+	@make resdl -C $(SDLPATH)
+
 clean:
 	@make clean -C $(NCURSESPATH)
 	@make clean -C $(SDLPATH)

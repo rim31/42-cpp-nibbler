@@ -84,7 +84,7 @@ std::list<std::list<t_blocks>> Snake::Draw()
 
       for (int k = 0; k < this->nTail; k++)
       {
-        if (x == this->tailY[k]  && y == this->tailX[k])
+        if (y == this->tailY[k]  && x == this->tailX[k])
         {
           line.push_back(BODY);
           printable = false;
@@ -201,9 +201,9 @@ void Snake::Logic()
     default:
       break;
   }
-  if (x < 0 || x > width || y < 0 || y > height)
+  if (x < 1 || x >= WIDTH - 1 || y < 1 || y >= HEIGHT - 1)
     gameOver = true;
-  for (int i = 0; i < nTail; i++)
+  for (int i = 0; i <= nTail; i++)
   {
     if (tailX[i] == x && tailY[i] == y)
       gameOver = true;
@@ -211,8 +211,8 @@ void Snake::Logic()
   if (x == fruitX && y == fruitY)
   {
     score++;
-    fruitX = rand() % width;
-    fruitY = rand() % height;
+    fruitX = rand() % WIDTH;
+    fruitY = rand() % HEIGHT;
     nTail++;
   }
 

@@ -68,6 +68,11 @@ fclean: clean
 	@rm -rf sdl2 glew glm sdl.tar $(SDL2)
 	@rm -rf $(NAME)
 
+fcleansdl:
+	@rm -rf $(NAME)
+
+resdl: fcleansdl all
+
 re: fclean all
 
 .PHONY: clean fclean re all libs Linux Darwin

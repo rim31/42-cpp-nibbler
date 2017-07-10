@@ -32,6 +32,8 @@ int main(void)
 
 	game->loop();
 
+	delete game;
+
 	// while (1)
 	// {
 	// 	snake->Draw();
