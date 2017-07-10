@@ -6,12 +6,12 @@
 #    By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/08 15:07:52 by svelhinh          #+#    #+#              #
-#    Updated: 2017/07/05 17:24:45 by svelhinh         ###   ########.fr        #
+#    Updated: 2017/07/10 18:23:04 by svelhinh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    = libsdl.so
-FLAG    = -Wall -Werror -Wextra -fPIC
+FLAG    = -g -Wall -Werror -Wextra -fPIC
 
 CLASS	= Graphics
 FILES	= $(CLASS)

@@ -6,15 +6,15 @@
 #    By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/08 15:07:52 by svelhinh          #+#    #+#              #
-#    Updated: 2017/07/10 15:57:50 by svelhinh         ###   ########.fr        #
+#    Updated: 2017/07/10 18:23:26 by svelhinh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang++
 
-CFLAGS = -Wall -Wextra -Werror --std=c++11
+CFLAGS = -g -Wall -Wextra -Werror --std=c++11
 
-LIBFLAGS = -ldl
+LIBFLAGS = -ldl -rpath $(SFMLPATH)/SFML/lib
 
 NCURSESPATH = libs/libncurses/
 
@@ -73,7 +73,7 @@ fclean: clean
 	@echo "\033[91mNibbler deleted\033[0m"
 	@rm -rf $(BIN_DIR)
 
-fcleanall: cleanall
+fcleanall: clean
 	@make fclean -C $(NCURSESPATH)
 	@make fclean -C $(SDLPATH)
 	@make fclean -C $(SFMLPATH)

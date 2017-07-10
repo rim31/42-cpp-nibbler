@@ -15,7 +15,7 @@ Game::Game (int h, int w)
 	guiHandler = new GraphicsHandler();
 	height = h;
 	width = w;
-	guiHandler->loadLibrary("libs/libsdl/libsdl.so", width, height);
+	guiHandler->loadLibrary("libs/libsdl/libsdl.so", w, h);
 
 	return;
 }
@@ -65,6 +65,9 @@ void Game::inputHandler(void)
 			break;
 		case LIB2:
 			loadLibrary("libs/libncurses/libncurses.so");
+			break;
+		case LIB3:
+			loadLibrary("libs/libsfml/libsfml.so");
 			break;
 			// =====================
 		case UP:

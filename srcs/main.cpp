@@ -1,9 +1,12 @@
 #include "GraphicsHandler.hpp"
 #include "Game.hpp"
 #include <cstdlib>
+#include <time.h>
 
 int main(int argc, char **argv)
 {
+	srand(time(NULL));
+
 	std::cout << "hauteur largeur library(ncurses/sdl/sfml)" << std::endl;
 	if (argc == 4)
 	{

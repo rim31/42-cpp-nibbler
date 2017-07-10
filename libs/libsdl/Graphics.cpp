@@ -42,7 +42,7 @@ Graphics::Graphics(Graphics const & src)
 Graphics::~Graphics(void)
 {
 	SDL_DestroyRenderer(_renderer);
-    SDL_DestroyWindow(_win);
+	SDL_DestroyWindow(_win);
     SDL_Quit();
 	return ;
 }
@@ -58,10 +58,13 @@ void Graphics::handleEvents(void)
 				case SDLK_2:
 					glib_action = LIB2;
 					break;
-				case SDLK_w:	// SDLK_w sur mac
+				case SDLK_3:
+					glib_action = LIB3;
+					break;
+				case SDLK_w:
 					glib_action = UP;
 					break;
-				case SDLK_a:	// SDLK_a sur mac
+				case SDLK_a:
 					glib_action = LEFT;
 					break;
 				case SDLK_s:
@@ -101,10 +104,10 @@ void Graphics::drawMap(void)
 					r = 255; g = 0; b = 0;
 					break;
 				case HEAD:
-					r = 0; g = 255; b = 0;
+					r = 255; g = 255; b = 0;
 					break;
 				case BODY:
-					r = 0; g = 0; b = 255;
+					r = 0; g = 255; b = 255;
 					break;
 				case FRUIT:
 					r = 255; g = 255; b = 255;

@@ -35,22 +35,25 @@ void Graphics::handleInput(void)
 {
 	switch (getch())
 	{
-		case '1':	// 1
+		case '1':
 			glib_action = LIB1;
 			break;
-		case 'w':	// Z : W sur mac
+		case '3':
+			glib_action = LIB3;
+			break;
+		case 'w':
 			glib_action = UP;
 			break;
-		case 'a':	// Q : A sur mac
+		case 'a':
 			glib_action = LEFT;
 			break;
-		case 's':	// S
+		case 's':
 			glib_action = DOWN;
 			break;
-		case 'd':	// D
+		case 'd':
 			glib_action = RIGHT;
 			break;
-		case 27:	// ESC
+		case 27:
 			glib_action = QUIT;
 			break;
 	}

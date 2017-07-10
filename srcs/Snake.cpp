@@ -56,7 +56,7 @@ void Snake::Setup()
   x = width / 2;
   y = height / 2;
   fruitX = 1 + rand() % (width - 2);
-  fruitY = 1 + rand() % (height - 2) ;
+  fruitY = 1 + rand() % (height - 2);
   score = 0;
   nTail = 0;
 }
@@ -107,8 +107,8 @@ void Snake::Logic()
   if (x == fruitX && y == fruitY)
   {
     score++;
-    fruitX = rand() % width;
-    fruitY = rand() % height;
+    fruitX = 1 + rand() % (width - 2);
+    fruitY = 1 + rand() % (height - 2);
     nTail++;
   }
 }
