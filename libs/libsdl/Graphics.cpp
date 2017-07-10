@@ -53,10 +53,13 @@ void Graphics::handleEvents(void)
 				case SDLK_2:
 					glib_action = LIB2;
 					break;
-				case SDLK_w:	// SDLK_w sur mac
+				case SDLK_3:
+					glib_action = LIB3;
+					break;
+				case SDLK_w:
 					glib_action = UP;
 					break;
-				case SDLK_a:	// SDLK_a sur mac
+				case SDLK_a:
 					glib_action = LEFT;
 					break;
 				case SDLK_s:

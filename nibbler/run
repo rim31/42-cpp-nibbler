@@ -1,4 +1,0 @@
-#!/bin/sh
-
-export DYLD_FALLBACK_FRAMEWORK_PATH="libs/libsfml/SFML/extlibs/libs-osx/Frameworks"
-./bin/nibbler

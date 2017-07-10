@@ -1,10 +1,12 @@
 #include "Graphics.hpp"
+#include <iostream>
 
 Graphics::Graphics(void)
 {
 	glib_action = NONE;
 
 	_win = new sf::RenderWindow(sf::VideoMode(800, 600), "Nibbler");
+	std::cout << "yo" << std::endl;
 	return ;
 }
 
@@ -36,44 +38,16 @@ void Graphics::handleEvents(void)
 				glib_action = LIB1;
 			else if (ev.key.code == sf::Keyboard::Num2)
 				glib_action = LIB2;
-			else if (ev.key.code == sf::Keyboard::Up)
+			else if (ev.key.code == sf::Keyboard::W)
 				glib_action = UP;
-			else if (ev.key.code == sf::Keyboard::Down)
+			else if (ev.key.code == sf::Keyboard::S)
 				glib_action = DOWN;
-			else if (ev.key.code == sf::Keyboard::Left)
+			else if (ev.key.code == sf::Keyboard::A)
 				glib_action = LEFT;
-			else if (ev.key.code == sf::Keyboard::Right)
+			else if (ev.key.code == sf::Keyboard::D)
 				glib_action = RIGHT;
 		}
 	}
-
-	// SDL_PollEvent(&_event);
-	// switch (_event.type)
-	// {
-	// 	case SDL_KEYDOWN:
-	// 		switch (_event.key.keysym.sym)
-	// 		{
-	// 			case SDLK_n:
-	// 				glib_action = LIB2;
-	// 				break;
-	// 			case SDLK_z:	// SDLK_w sur mac
-	// 				glib_action = UP;
-	// 				break;
-	// 			case SDLK_q:	// SDLK_a sur mac
-	// 				glib_action = LEFT;
-	// 				break;
-	// 			case SDLK_s:
-	// 				glib_action = DOWN;
-	// 				break;
-	// 			case SDLK_d:
-	// 				glib_action = RIGHT;
-	// 				break;
-	// 			case SDLK_ESCAPE:
-	// 				glib_action = QUIT;
-	// 				break;
-	// 		}
-	// 		break;
-	// }
 }
 
 void Graphics::drawMap(void)
@@ -81,7 +55,8 @@ void Graphics::drawMap(void)
 	// sf::CircleShape shape(100.f);
     // shape.setFillColor(sf::Color::Green);
 
-	// _win.clear();
+	// _win->clear();
+	// _win->display();
 	// _win.draw(shape);
 	// _win.display();
 
@@ -126,8 +101,11 @@ void Graphics::drawMap(void)
 
 void Graphics::update(void)
 {
-	handleEvents();
-	// drawMap();
+	if (_win->isOpen())
+	{
+	 	handleEvents();
+		// drawMap();
+	}
 }
 
 Graphics & Graphics::operator=(Graphics const & rhs)

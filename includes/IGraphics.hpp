@@ -19,6 +19,7 @@ typedef enum		e_action
 	NONE,
 	LIB1,
 	LIB2,
+	LIB3,
 	UP,
 	DOWN,
 	LEFT,

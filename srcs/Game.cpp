@@ -59,6 +59,9 @@ void Game::inputHandler(void)
 		case LIB2:
 			loadLibrary("libs/libncurses/libncurses.so");
 			break;
+		case LIB3:
+			loadLibrary("libs/libsfml/libsfml.so");
+			break;
 			// =====================
 		case UP:
 		case LEFT:
@@ -135,12 +138,12 @@ void Game::loop()
 			guiHandler->guiInst->glib_action = QUIT;
 		inputHandler();
 
-		if (!snake->gameOver)
-		{
-			snake->Logic();
-			Draw();
+		// if (!snake->gameOver)
+		// {
+		// 	snake->Logic();
+		// 	Draw();
 			guiHandler->guiInst->update();
-		}
+		// }
 		usleep(1000 / 25 * 1000);
 	}
 }

@@ -6,7 +6,7 @@
 #    By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/08 15:07:52 by svelhinh          #+#    #+#              #
-#    Updated: 2017/07/10 15:52:03 by svelhinh         ###   ########.fr        #
+#    Updated: 2017/07/10 16:29:54 by svelhinh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,4 +59,4 @@ resfml: fcleansfml all
 
 re: fclean all
 
-.PHONY: clean fclean re all sfml resfml fcleansfml
+.PHONY: clean fclean re all sfml resfml fcleansfml allall
