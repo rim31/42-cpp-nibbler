@@ -6,13 +6,13 @@
 #    By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/08 15:07:52 by svelhinh          #+#    #+#              #
-#    Updated: 2017/07/10 15:50:37 by svelhinh         ###   ########.fr        #
+#    Updated: 2017/07/10 18:22:59 by svelhinh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang++
 
-CFLAGS = -Wall -Wextra -Werror --std=c++11 -fPIC
+CFLAGS = -g -Wall -Wextra -Werror --std=c++11 -fPIC
 
 LIBFLAGS = -lncurses -shared -fPIC
 

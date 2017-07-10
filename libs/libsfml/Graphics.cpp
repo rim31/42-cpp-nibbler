@@ -1,12 +1,10 @@
 #include "Graphics.hpp"
-#include <iostream>
 
 Graphics::Graphics(void)
 {
 	glib_action = NONE;
 
 	_win = new sf::RenderWindow(sf::VideoMode(800, 600), "Nibbler");
-	std::cout << "yo" << std::endl;
 	return ;
 }
 
@@ -101,11 +99,11 @@ void Graphics::drawMap(void)
 
 void Graphics::update(void)
 {
-	if (_win->isOpen())
-	{
+	// if (_win->isOpen())
+	// {
 	 	handleEvents();
 		// drawMap();
-	}
+	// }
 }
 
 Graphics & Graphics::operator=(Graphics const & rhs)

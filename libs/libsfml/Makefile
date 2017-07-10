@@ -6,13 +6,13 @@
 #    By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/08 15:07:52 by svelhinh          #+#    #+#              #
-#    Updated: 2017/07/10 16:29:54 by svelhinh         ###   ########.fr        #
+#    Updated: 2017/07/10 18:23:08 by svelhinh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang++
 
-CFLAGS = -Wall -Wextra -Werror --std=c++11 -fPIC
+CFLAGS = -g -Wall -Wextra -Werror --std=c++11 -fPIC
 
 LIBFLAGS = -LSFML/lib -lsfml-graphics -lsfml-window -lsfml-system -shared -fPIC
 

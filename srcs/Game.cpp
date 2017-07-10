@@ -8,7 +8,7 @@ Game::Game (void)
 
 	snake->Setup();
 	guiHandler = new GraphicsHandler();
-	guiHandler->loadLibrary("libs/libsdl/libsdl.so");
+	guiHandler->loadLibrary("libs/libsfml/libsfml.so");
 
 	return;
 }

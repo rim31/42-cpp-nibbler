@@ -37,7 +37,7 @@ Graphics::Graphics(Graphics const & src)
 Graphics::~Graphics(void)
 {
 	SDL_DestroyRenderer(_renderer);
-    SDL_DestroyWindow(_win);
+	SDL_DestroyWindow(_win);
     SDL_Quit();
 	return ;
 }
