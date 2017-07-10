@@ -55,116 +55,6 @@ void Snake::Setup()
   nTail = 0;
 }
 
-std::list<std::list<t_blocks>> Snake::Draw()
-{
-  std::list<std::list<t_blocks>> map;
-  bool printable;//variable pour afficher la queue du serpeut
-
-  for (int y = 0; y < HEIGHT; y++)
-  {
-    std::list<t_blocks> line;
-    for (int x = 0; x < WIDTH; x++)
-    {
-      printable = true;
-      if (x == this->x && y == this->y)
-      {
-        printable = false;
-        line.push_back(HEAD);
-      }
-      if (y == 0 || y == HEIGHT - 1 || x == 0 || x == WIDTH - 1)
-      {
-        printable = false;
-        line.push_back(WALL);
-      }
-      if (x == this->fruitX && y == this->fruitY)
-      {
-        printable = false;
-        line.push_back(FRUIT);
-      }
-
-      for (int k = 0; k < this->nTail; k++)
-      {
-        if (y == this->tailY[k]  && x == this->tailX[k])
-        {
-          line.push_back(BODY);
-          printable = false;
-        }
-      }
-      if (printable)
-        line.push_back(BLKNONE);
-    }
-    map.push_back(line);
-  }
-
-  return map;
-
-  // system("clear");
-  // bool printable;
-  // for (int i = 0; i < width + 1; i++)
-  // {
-  //   std::cout << "#";
-  // }
-  // std::cout << std::endl;
-  // for (int i = 0; i < height; i++)
-  // {
-  //   for (int j = 0; j < width; j++)
-  //   {
-  //     if (j == 0)
-  //       std::cout << "#";
-  //     if (i == y  && j == x)
-  //       std::cout << "S";//sanke
-  //     else if (i == fruitY  && j == fruitX)
-  //       std::cout << "F";//fruit
-  //     else
-  //     {
-  //       printable = false;
-  //       for (int k = 0; k < nTail; k++)
-  //       {
-  //         if (i == tailY[k]  && j == tailX[k])
-  //           std::cout << "s";
-  //           printable = true;
-  //       }
-  //     }
-  //     if (!printable)
-  //       std::cout << " ";//case vide
-  //     if (j == width - 1)
-  //       std::cout << "#";
-  //   }
-  //   std::cout << std::endl;
-  // }
-  // for (int i = 0; i < width+1; i++)
-  // {
-  //   std::cout << "#";
-  // }
-  // std::cout << std::endl;
-  // std::cout << "SCORE :"<< score <<std::endl;
-
-}
-
-// void Snake::Input(eDirection direction)
-// {
-  // if (_knhit())
-  // {
-  //   switch(_getch())
-  //     case 'a':
-  //       dir = LEFT;
-  //       break;
-  //     case 'd':
-  //       dir = RIGHT;
-  //       break;
-  //     case 'w':
-  //       dir = UP;
-  //       break;
-  //     case 's':
-  //       dir = DOWN;
-  //       break;
-  //     case 'x':
-  //       gameOver = true;
-  //       break;
-  //   }
-  // }
-// }
-
 void Snake::Logic()
 {
   int prevX = tailX[0];
@@ -174,46 +64,45 @@ void Snake::Logic()
   tailY[0] = y;
   for (int i = 1; i < nTail; i++)
   {
-    prev2X = tailX[i];
-    prev2Y = tailY[i];
-    tailX[i] = prevX;
-    tailY[i] = prevY;
-    prevX = prev2X;
-    prevY = prev2Y;
+  prev2X = tailX[i];
+  prev2Y = tailY[i];
+  tailX[i] = prevX;
+  tailY[i] = prevY;
+  prevX = prev2X;
+  prevY = prev2Y;
   }
   switch ( dir ) {
-    case LEFT:
-      dir = LEFT;
-      x--;
-      break;
-    case  RIGHT:
-      dir = RIGHT;
-      x++;
-      break;
-    case UP:
-      dir = UP;
-      y--;
-      break;
-    case DOWN:
-      dir = DOWN;
-      y++;
-      break;
-    default:
-      break;
+  case LEFT:
+    dir = LEFT;
+    x--;
+    break;
+  case  RIGHT:
+    dir = RIGHT;
+    x++;
+    break;
+  case UP:
+    dir = UP;
+    y--;
+    break;
+  case DOWN:
+    dir = DOWN;
+    y++;
+    break;
+  default:
+    break;
   }
-  if (x < 1 || x >= WIDTH - 1 || y < 1 || y >= HEIGHT - 1)
-    gameOver = true;
+  if (x < 2 || x >= WIDTH - 2 || y < 2 || y >= HEIGHT - 2)
+  gameOver = true;
   for (int i = 0; i <= nTail; i++)
   {
-    if (tailX[i] == x && tailY[i] == y)
-      gameOver = true;
+  if (tailX[i] == x && tailY[i] == y)
+    gameOver = true;
   }
   if (x == fruitX && y == fruitY)
   {
-    score++;
-    fruitX = rand() % WIDTH;
-    fruitY = rand() % HEIGHT;
-    nTail++;
+  score++;
+  fruitX = rand() % WIDTH;
+  fruitY = rand() % HEIGHT;
+  nTail++;
   }
-
 }

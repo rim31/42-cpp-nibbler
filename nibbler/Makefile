@@ -6,7 +6,7 @@
 #    By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/08 15:07:52 by svelhinh          #+#    #+#              #
-#    Updated: 2017/04/12 17:09:54 by svelhinh         ###   ########.fr        #
+#    Updated: 2017/07/10 15:57:50 by svelhinh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,11 @@ NCURSESPATH = libs/libncurses/
 
 SDLPATH = libs/libsdl/
 
-NAME = nibbler
+SFMLPATH = libs/libsfml/
+
+BIN_DIR = bin
+
+NAME = $(BIN_DIR)/nibbler
 
 SRC = main.cpp GraphicsHandler.cpp Game.cpp Snake.cpp
 
@@ -38,8 +42,10 @@ all: $(NAME)
 	@echo -n "\033[0m"
 
 $(NAME): $(OBJ)
+	@mkdir -p $(BIN_DIR)
 	@make -C $(NCURSESPATH)
 	@make -C $(SDLPATH)
+	@make -C $(SFMLPATH)
 	@$(CC) $(OBJ) -o $@ $(LIBFLAGS)
 
 %.o: %.cpp
@@ -50,18 +56,32 @@ $(NAME): $(OBJ)
 resdl:
 	@make resdl -C $(SDLPATH)
 
+resfml:
+	@make resfml -C $(SFMLPATH)
+
 clean:
 	@make clean -C $(NCURSESPATH)
 	@make clean -C $(SDLPATH)
+	@make clean -C $(SFMLPATH)
 	@echo "\033[91mNibbler objs deleted\033[0m"
 	@rm -rf $(OBJ)
 
 fclean: clean
 	@make fclean -C $(NCURSESPATH)
-	@make fclean -C $(SDLPATH)
+	@make fcleansdl -C $(SDLPATH)
+	@make fcleansfml -C $(SFMLPATH)
 	@echo "\033[91mNibbler deleted\033[0m"
-	@rm -rf $(NAME)
+	@rm -rf $(BIN_DIR)
+
+fcleanall: cleanall
+	@make fclean -C $(NCURSESPATH)
+	@make fclean -C $(SDLPATH)
+	@make fclean -C $(SFMLPATH)
+	@echo "\033[91mNibbler deleted\033[0m"
+	@rm -rf $(BIN_DIR)
+
+reall: fcleanall all
 
 re: fclean all
 
-.PHONY: clean fclean re all rtv
+.PHONY: clean fclean re all reall fcleanall cleanall resdl resfml

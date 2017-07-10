@@ -13,7 +13,6 @@ class Game
 private:
   Snake *snake;
   GraphicsHandler	*guiHandler;
-  std::list<std::list<t_blocks>>	*map;
   std::list<std::list<t_blocks>> mapTmp;
 
   public:
@@ -23,8 +22,10 @@ private:
     virtual ~Game( void );//destructeur
     Game & operator=( Game const & nb);//operateur egal :  operateur d'assignation = mise a jour de l'instance courante
 
-    //===========methode==========
+    //===========methodes==========
+    void  Draw();
     void inputHandler();
+    void	loadLibrary(std::string libraryToLoad);
     void loop();
 
 
