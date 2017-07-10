@@ -4,11 +4,18 @@
 //======================= instanciation =======================
 Game::Game (void)
 {
-	snake = new Snake();
+	return;
+}
+
+Game::Game (int h, int w)
+{
+	snake = new Snake(h, w);
 
 	snake->Setup();
 	guiHandler = new GraphicsHandler();
-	guiHandler->loadLibrary("libs/libsdl/libsdl.so");
+	height = h;
+	width = w;
+	guiHandler->loadLibrary("libs/libsdl/libsdl.so", width, height);
 
 	return;
 }
@@ -44,7 +51,7 @@ void	Game::loadLibrary(std::string libraryToLoad)
 		delete guiHandler;
 
 	guiHandler = new GraphicsHandler();
-	guiHandler->loadLibrary(libraryToLoad);
+	guiHandler->loadLibrary(libraryToLoad, width, height);
 	guiHandler->guiInst->glib_action = NONE;
 	guiHandler->guiInst->map = mapTmp;
 }
@@ -88,18 +95,18 @@ void	Game::Draw()
 
 	bool printable;	//variable pour savoir si on a deja affiché un truc
 
-	for (int y = 0; y < HEIGHT; y++)
+	for (int y = 0; y < height; y++)
 	{
 		std::list<t_blocks> line;
-		for (int x = 0; x < WIDTH; x++)
+		for (int x = 0; x < width; x++)
 		{
 			printable = true;
 			if (x == snake->x && y == snake->y)
 			{
-			printable = false;
-			line.push_back(HEAD);
+				printable = false;
+				line.push_back(HEAD);
 			}
-			if (y == 0 || y == HEIGHT - 1 || x == 0 || x == WIDTH - 1)
+			if (y == 0 || y == height - 1 || x == 0 || x == width - 1)
 			{
 			printable = false;
 			line.push_back(WALL);
@@ -114,7 +121,10 @@ void	Game::Draw()
 			{
 				if (y == snake->tailY[k]  && x == snake->tailX[k])
 				{
+					snake->tailX.push_back(x);
+					snake->tailY.push_back(y);
 					line.push_back(BODY);
+
 					printable = false;
 				}
 			}

@@ -32,7 +32,7 @@ void	GraphicsHandler::dlerror_wrapper(void)
 	exit(EXIT_FAILURE);
 }
 
-void	GraphicsHandler::loadLibrary(std::string libName)
+void	GraphicsHandler::loadLibrary(std::string libName, int width, int height)
 {
 	_handler = dlopen(libName.c_str(), RTLD_LAZY | RTLD_LOCAL);
 
@@ -42,7 +42,7 @@ void	GraphicsHandler::loadLibrary(std::string libName)
 	_uninstantiate = reinterpret_cast<t_sym_uninstantiate>(loadSymbol("glibUninstantiate"));
 	t_sym_instantiate	instantiate = reinterpret_cast<t_sym_instantiate>(loadSymbol("glibInstantiate"));
 
-	GraphicsHandler::guiInst = instantiate();
+	GraphicsHandler::guiInst = instantiate(width, height);
 }
 
 void	*GraphicsHandler::loadSymbol(const std::string symbolName)

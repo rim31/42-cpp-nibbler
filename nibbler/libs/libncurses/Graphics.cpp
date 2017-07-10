@@ -2,6 +2,11 @@
 
 Graphics::Graphics(void)
 {
+	return ;
+}
+
+Graphics::Graphics(int w, int h)
+{
 	glib_action = NONE;
 
 	initscr();
@@ -9,7 +14,7 @@ Graphics::Graphics(void)
 	nodelay(stdscr, TRUE);
 	keypad(stdscr, TRUE);
 
-	_win = newwin(HEIGHT, WIDTH, 0, 0);
+	_win = newwin(h, w, 0, 0);
 	update();
 	return ;
 }
@@ -98,9 +103,9 @@ Graphics & Graphics::operator=(Graphics const & rhs)
 	return *this;
 }
 
-Graphics	*glibInstantiate()
+Graphics	*glibInstantiate(int w, int h)
 {
-	return new Graphics();
+	return new Graphics(w, h);
 }
 
 void		glibUninstantiate(IGraphics * g)

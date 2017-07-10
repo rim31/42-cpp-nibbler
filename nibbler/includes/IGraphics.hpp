@@ -1,7 +1,5 @@
 #ifndef IGRAPHICS_HPP
 # define IGRAPHICS_HPP
-# define HEIGHT 40
-# define WIDTH 100
 
 # include <list>
 

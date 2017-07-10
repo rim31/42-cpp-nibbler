@@ -11,6 +11,7 @@ class Snake
 {
   public:
     Snake(void);//constructeur
+    Snake(int h, int w);//constructeur
     Snake(const char * str);        // ??? OSEF, juste pour le style coplient
     Snake(Snake const & src);//constructeur par copie = avec comme parametre une instance de la clase declaree
     virtual ~Snake( void );//destructeur

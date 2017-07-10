@@ -2,7 +2,15 @@
 
 Graphics::Graphics(void)
 {
+	return ;
+}
+
+Graphics::Graphics(int w, int h)
+{
 	glib_action = NONE;
+
+	(void)w;
+	(void)h;
 
 	_win = new sf::RenderWindow(sf::VideoMode(800, 600), "Nibbler");
 	return ;
@@ -136,9 +144,9 @@ Graphics & Graphics::operator=(Graphics const & rhs)
 	return *this;
 }
 
-Graphics	*glibInstantiate()
+Graphics	*glibInstantiate(int w, int h)
 {
-	return new Graphics();
+	return new Graphics(w, h);
 }
 
 void		glibUninstantiate(IGraphics * g)

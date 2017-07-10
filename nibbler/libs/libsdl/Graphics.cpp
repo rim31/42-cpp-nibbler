@@ -3,6 +3,11 @@
 
 Graphics::Graphics(void)
 {
+	return ;
+}
+
+Graphics::Graphics(int w, int h)
+{
 	glib_action = NONE;
 
 	SDL_Init(SDL_INIT_VIDEO);              // Initialize SDL2
@@ -12,8 +17,8 @@ Graphics::Graphics(void)
 	    "Nibbler",							// _win title
 	    SDL_WINDOWPOS_UNDEFINED,			// initial x position
 	    SDL_WINDOWPOS_UNDEFINED,			// initial y position
-	    WIDTH * REALWIDTHMULT,				// width, in pixels
-	    HEIGHT * REALHEIGHTMULT,			// height, in pixels
+	    w * REALWIDTHMULT,				// width, in pixels
+	    h * REALHEIGHTMULT,			// height, in pixels
 	    SDL_WINDOW_OPENGL					// flags
 	);
 
@@ -126,9 +131,9 @@ Graphics & Graphics::operator=(Graphics const & rhs)
 	return *this;
 }
 
-Graphics	*glibInstantiate()
+Graphics	*glibInstantiate(int w, int h)
 {
-	return new Graphics();
+	return new Graphics(w, h);
 }
 
 void		glibUninstantiate(IGraphics * g)

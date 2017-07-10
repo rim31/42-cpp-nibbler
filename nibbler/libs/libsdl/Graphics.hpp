@@ -31,6 +31,7 @@ private:
 
 public:
 	Graphics(void);
+	Graphics(int w, int h);
 	Graphics(Graphics const &);
 	virtual	~Graphics(void);
 
@@ -41,7 +42,7 @@ public:
 
 extern "C"
 {
-	Graphics	*glibInstantiate();
+	Graphics	*glibInstantiate(int w, int h);
 	void		glibUninstantiate(IGraphics * g);
 }
 

@@ -17,10 +17,14 @@ private:
 
   public:
     Game(void);//constructeur
+    Game (int h, int w);
     Game(const char * str);        // ??? OSEF, juste pour le style complinent
     Game(Game const & src);//constructeur par copie = avec comme parametre une instance de la clase declaree
     virtual ~Game( void );//destructeur
     Game & operator=( Game const & nb);//operateur egal :  operateur d'assignation = mise a jour de l'instance courante
+
+    int height;
+    int width;
 
     //===========methodes==========
     void  Draw();

@@ -3,15 +3,21 @@
 //======================= instanciation =======================
 Snake::Snake (void)
 {
-  width = 20;
-  height = 20;
+  return;
+}
+
+Snake::Snake (int h, int w)
+{
+  width = w;
+  height = h;
   nTail = 0;
-  tailX = std::vector<int>(100);
-  tailY = std::vector<int>(100);
+  tailX = std::vector<int>(1);
+  tailY = std::vector<int>(1);
   Setup();
   // std::cout << "Default constructor called" << std::endl;
   return;
 }
+
 Snake::Snake (const char * message)
 {
   (void)message;
@@ -47,10 +53,10 @@ void Snake::Setup()
 {
   gameOver = false;
   dir = RIGHT;
-  x = WIDTH / 2;
-  y = HEIGHT / 2;
-  fruitX = rand() % WIDTH;
-  fruitY = rand() % HEIGHT;
+  x = width / 2;
+  y = height / 2;
+  fruitX = 1 + rand() % (width - 2);
+  fruitY = 1 + rand() % (height - 2) ;
   score = 0;
   nTail = 0;
 }
@@ -64,12 +70,12 @@ void Snake::Logic()
   tailY[0] = y;
   for (int i = 1; i < nTail; i++)
   {
-  prev2X = tailX[i];
-  prev2Y = tailY[i];
-  tailX[i] = prevX;
-  tailY[i] = prevY;
-  prevX = prev2X;
-  prevY = prev2Y;
+    prev2X = tailX[i];
+    prev2Y = tailY[i];
+    tailX[i] = prevX;
+    tailY[i] = prevY;
+    prevX = prev2X;
+    prevY = prev2Y;
   }
   switch ( dir ) {
   case LEFT:
@@ -91,8 +97,8 @@ void Snake::Logic()
   default:
     break;
   }
-  if (x < 2 || x >= WIDTH - 2 || y < 2 || y >= HEIGHT - 2)
-  gameOver = true;
+  if (x < 2 || x >= width - 2 || y < 2 || y >= height - 2)
+    gameOver = true;
   for (int i = 0; i <= nTail; i++)
   {
   if (tailX[i] == x && tailY[i] == y)
@@ -100,9 +106,9 @@ void Snake::Logic()
   }
   if (x == fruitX && y == fruitY)
   {
-  score++;
-  fruitX = rand() % WIDTH;
-  fruitY = rand() % HEIGHT;
-  nTail++;
+    score++;
+    fruitX = rand() % width;
+    fruitY = rand() % height;
+    nTail++;
   }
 }
