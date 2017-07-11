@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Graphics.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/11 14:54:57 by svelhinh          #+#    #+#             */
+/*   Updated: 2017/07/11 14:54:57 by svelhinh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Graphics.hpp"
+#include <iostream>
 
 Graphics::Graphics(void)
 {
@@ -10,6 +23,16 @@ Graphics::Graphics(int w, int h): _w(w * REALWIDTHMULT), _h(h * REALHEIGHTMULT)
 	glib_action = NONE;
 
 	_win = new sf::RenderWindow(sf::VideoMode(_w, _h), "Nibbler SFML");
+
+	try
+	{
+		if (_win == NULL)
+			throw "Could not create sfml window";
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 	return ;
 }
 
@@ -52,8 +75,6 @@ void Graphics::handleEvents(void)
 		}
 	}
 }
-
-#include <iostream>
 
 void Graphics::drawMap(void)
 {

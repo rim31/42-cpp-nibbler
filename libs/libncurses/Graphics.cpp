@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Graphics.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/11 14:55:31 by svelhinh          #+#    #+#             */
+/*   Updated: 2017/07/11 14:55:31 by svelhinh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Graphics.hpp"
 
 Graphics::Graphics(void)
@@ -91,13 +103,13 @@ void Graphics::drawMap(void)
 			mvwaddch(_win, y, x, c);
 		}
 	}
+    wrefresh(_win);
 }
 
 void Graphics::update(void)
 {
 	handleEvents();
 	drawMap();
-    wrefresh(_win);
 }
 
 Graphics & Graphics::operator=(Graphics const & rhs)

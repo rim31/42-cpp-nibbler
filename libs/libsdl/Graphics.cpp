@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Graphics.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/11 14:55:17 by svelhinh          #+#    #+#             */
+/*   Updated: 2017/07/11 14:58:32 by svelhinh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Graphics.hpp"
 #include <iostream>
 
@@ -22,13 +34,33 @@ Graphics::Graphics(int w, int h)
 	    SDL_WINDOW_OPENGL					// flags
 	);
 
-	_renderer = SDL_CreateRenderer(_win, -1, SDL_RENDERER_SOFTWARE);
-
 	// Check that the _win was successfully created
-	if (_win == NULL) {
-	    // In the case that the _win could not be made...
-		std::cout << "Could not create window: " << SDL_GetError() << std::endl;
-	    return ;
+	try
+	{
+		if (_win == NULL)
+		{
+			std::string str = "Could not create window: ";
+			throw str + SDL_GetError();
+		}
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	_renderer = SDL_CreateRenderer(_win, -1, SDL_RENDERER_SOFTWARE);	
+
+	try
+	{
+		if (_renderer == NULL)
+		{
+			std::string str = "Could not create renderer: ";
+			throw str + SDL_GetError();
+		}
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
 	}
 	return ;
 }
