@@ -156,9 +156,9 @@ void Game::loop()
 		}
 		// =============== vitesse ===========
 		if (snake->nTail <= 1)
-				usleep(3000 / 25 * 1000);
+				usleep(1000 / 10 * 1000);
 		else if (snake->nTail <= 4)
-				usleep(2000 / 25 * 1000);
+				usleep(1000 / 15 * 1000);
 		else
 				usleep(1000 / 25 * 1000);
 

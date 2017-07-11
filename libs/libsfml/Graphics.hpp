@@ -6,7 +6,7 @@
 /*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 15:28:43 by svelhinh          #+#    #+#             */
-/*   Updated: 2017/07/11 13:46:47 by svelhinh         ###   ########.fr       */
+/*   Updated: 2017/07/11 14:31:26 by svelhinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,6 @@ private:
 	sf::RenderWindow	*_win;
 	int _w;
 	int _h;
-	// SDL_Window		*_win;
-	// SDL_Renderer	*_renderer;
-	// SDL_Event		_event;
-
-	void	handleEvents(void);
-	void	drawMap(void);
 
 public:
 	Graphics(void);
@@ -38,6 +32,8 @@ public:
 	Graphics(Graphics const &);
 	virtual	~Graphics(void);
 
+	void	handleEvents(void);
+	void	drawMap(void);
 	void	update(void);
 
 	Graphics & operator=(Graphics const &);

@@ -9,15 +9,14 @@ class Graphics : public IGraphics
 private:
 	WINDOW *_win;
 
-	void	handleInput(void);
-	void	drawMap(void);
-
 public:
 	Graphics(void);
 	Graphics(int w, int h);
 	Graphics(Graphics const &);
 	virtual	~Graphics(void);
 
+	void	handleEvents(void);
+	void	drawMap(void);
 	void	update(void);
 
 	Graphics & operator=(Graphics const &);

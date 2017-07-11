@@ -31,7 +31,7 @@ Graphics::~Graphics(void)
 	return ;
 }
 
-void Graphics::handleInput(void)
+void Graphics::handleEvents(void)
 {
 	switch (getch())
 	{
@@ -95,7 +95,7 @@ void Graphics::drawMap(void)
 
 void Graphics::update(void)
 {
-	handleInput();
+	handleEvents();
 	drawMap();
     wrefresh(_win);
 }

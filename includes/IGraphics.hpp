@@ -32,6 +32,8 @@ public:
 	std::list<std::list<t_blocks>>	map;
 
 	virtual	~IGraphics(void) = default;
+	virtual void	handleEvents(void) = 0;
+	virtual void	drawMap(void) = 0;
 	virtual void	update(void) = 0;
 };
 

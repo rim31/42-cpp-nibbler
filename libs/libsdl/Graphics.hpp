@@ -6,7 +6,7 @@
 /*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 15:28:43 by svelhinh          #+#    #+#             */
-/*   Updated: 2017/07/10 15:38:31 by svelhinh         ###   ########.fr       */
+/*   Updated: 2017/07/11 14:31:31 by svelhinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,14 @@ private:
 	SDL_Renderer	*_renderer;
 	SDL_Event		_event;
 
-	void	handleEvents(void);
-	void	drawMap(void);
-
 public:
 	Graphics(void);
 	Graphics(int w, int h);
 	Graphics(Graphics const &);
 	virtual	~Graphics(void);
 
+	void	handleEvents(void);
+	void	drawMap(void);
 	void	update(void);
 
 	Graphics & operator=(Graphics const &);
