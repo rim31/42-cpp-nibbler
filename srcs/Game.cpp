@@ -7,7 +7,7 @@ Game::Game (void)
 	return;
 }
 
-Game::Game (int h, int w)
+Game::Game (int h, int w, std::string libpath)
 {
 	snake = new Snake(h, w);
 
@@ -15,7 +15,7 @@ Game::Game (int h, int w)
 	guiHandler = new GraphicsHandler();
 	height = h;
 	width = w;
-	guiHandler->loadLibrary("libs/libsdl/libsdl.so", w, h);
+	guiHandler->loadLibrary(libpath, w, h);
 
 	return;
 }
