@@ -27,7 +27,8 @@ class Snake
     bool gameOver;
     int width;
     int height;
-    int x, y, fruitX, fruitY, score;
+    float x, y;
+    int fruitX, fruitY, score;
     std::vector<int> tailX, tailY;//on limite a 100 fruit max, faut pas deconner, tu vas mourir avant de tester plus que ca dans la correction
     int nTail;
     t_action dir;

@@ -122,12 +122,13 @@ void	Game::Draw()
 
 			for (int k = 0; k < snake->nTail; k++)
 			{
-				if (y == snake->tailY[k]  && x == snake->tailX[k])
+				if (y == snake->tailY[k] && x == snake->tailX[k])
 				{
 					snake->tailX.push_back(x);
 					snake->tailY.push_back(y);
 					line.push_back(BODY);
 
+					// std::cout << snake->tailX[k] << " | " << snake->tailY[k] << " : " << snake->nTail << std::endl;
 					printable = false;
 				}
 			}
@@ -136,7 +137,6 @@ void	Game::Draw()
 		}
 		map.push_back(line);
 	}
-
 	guiHandler->guiInst->map = map;
 }
 
@@ -154,6 +154,13 @@ void Game::loop()
 			Draw();
 			guiHandler->guiInst->update();
 		}
-		usleep(1000 / 25 * 1000);
+		// =============== vitesse ===========
+		if (snake->nTail <= 1)
+				usleep(3000 / 25 * 1000);
+		else if (snake->nTail <= 4)
+				usleep(2000 / 25 * 1000);
+		else
+				usleep(1000 / 25 * 1000);
+
 	}
 }

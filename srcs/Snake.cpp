@@ -68,7 +68,7 @@ void Snake::Logic()
   int prev2X, prev2Y;
   tailX[0] = x;
   tailY[0] = y;
-  for (int i = 1; i < nTail; i++)
+  for (int i = 1; i <= nTail; i++)
   {
     prev2X = tailX[i];
     prev2Y = tailY[i];
@@ -76,6 +76,8 @@ void Snake::Logic()
     tailY[i] = prevY;
     prevX = prev2X;
     prevY = prev2Y;
+
+    // std::cout << tailX[i] << " | " << tailY[i] << " : " << nTail << std::endl;
   }
   switch ( dir ) {
   case LEFT:
@@ -101,8 +103,9 @@ void Snake::Logic()
     gameOver = true;
   for (int i = 0; i <= nTail; i++)
   {
-  if (tailX[i] == x && tailY[i] == y)
-    gameOver = true;
+    if (tailX[i] == x && tailY[i] == y)
+      gameOver = true;
+      // std::cout << tailX[i] << " | " << tailY[i] << " : " << i << std::endl;
   }
   if (x == fruitX && y == fruitY)
   {
@@ -110,5 +113,7 @@ void Snake::Logic()
     fruitX = 1 + rand() % (width - 2);
     fruitY = 1 + rand() % (height - 2);
     nTail++;
+    tailX[nTail - 1] = -1;
+    tailY[nTail - 1] = -1;
   }
 }
