@@ -14,7 +14,7 @@ Graphics::Graphics(int w, int h)
 
 	// Create an application win with the following settings:
 	_win = SDL_CreateWindow(
-	    "Nibbler",							// _win title
+	    "Nibbler SDL",							// _win title
 	    SDL_WINDOWPOS_UNDEFINED,			// initial x position
 	    SDL_WINDOWPOS_UNDEFINED,			// initial y position
 	    w * REALWIDTHMULT,				// width, in pixels

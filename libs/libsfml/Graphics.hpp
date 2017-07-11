@@ -6,7 +6,7 @@
 /*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 15:28:43 by svelhinh          #+#    #+#             */
-/*   Updated: 2017/07/10 19:09:40 by svelhinh         ###   ########.fr       */
+/*   Updated: 2017/07/11 13:46:47 by svelhinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@
 #include <SFML/Graphics.hpp>
 # include "IGraphics.hpp"
 
-# define REALHEIGHTMULT 50
+# define REALHEIGHTMULT 15
 # define REALWIDTHMULT 10
 
 class Graphics : public IGraphics
 {
 private:
 	sf::RenderWindow	*_win;
+	int _w;
+	int _h;
 	// SDL_Window		*_win;
 	// SDL_Renderer	*_renderer;
 	// SDL_Event		_event;

@@ -5,14 +5,11 @@ Graphics::Graphics(void)
 	return ;
 }
 
-Graphics::Graphics(int w, int h)
+Graphics::Graphics(int w, int h): _w(w * REALWIDTHMULT), _h(h * REALHEIGHTMULT)
 {
 	glib_action = NONE;
 
-	(void)w;
-	(void)h;
-
-	_win = new sf::RenderWindow(sf::VideoMode(800, 600), "Nibbler");
+	_win = new sf::RenderWindow(sf::VideoMode(_w, _h), "Nibbler SFML");
 	return ;
 }
 
@@ -56,62 +53,69 @@ void Graphics::handleEvents(void)
 	}
 }
 
+#include <iostream>
+
 void Graphics::drawMap(void)
 {
-	// sf::CircleShape shape(100.f);
-    // shape.setFillColor(sf::Color::Green);
+	sf::Texture texture;
+	sf::Image img;
+	img.create(_w, _h, sf::Color::Black);
+	texture.create(_w, _h);
+	sf::Sprite	sprite(texture);
+	int y = 0;
 
-	// _win->clear();
-	// _win->display();
-	// _win.draw(shape);
-	// _win.display();
+	_win->clear();
 
-	// int y = 0;
+	for (std::list<std::list<t_blocks>>::iterator itr = map.begin(); itr != map.end(); itr++, ++y)
+	{
+		std::list<t_blocks> tl = *itr;
+		int x = 0;
 
-	// SDL_RenderClear(_renderer);
+		for (std::list<t_blocks>::iterator it = tl.begin(); it != tl.end(); it++, ++x)
+		{
+			char r = 0, g = 0, b = 0;
+			switch (*it)
+			{
+				case BLKNONE:
+					r = 0; g = 0; b = 0;
+					break;
+				case WALL:
+					r = 255; g = 0; b = 0;
+					break;
+				case HEAD:
+					r = 0; g = 255; b = 0;
+					break;
+				case BODY:
+					r = 0; g = 0; b = 255;
+					break;
+				case FRUIT:
+					r = 255; g = 255; b = 255;
+					break;
+			}
+			for (int y1 = y * REALHEIGHTMULT; y1 < (y + 1) * REALHEIGHTMULT; y1++)
+			{
+				for (int x1 = x * REALWIDTHMULT; x1 < (x + 1) * REALWIDTHMULT; x1++)
+				{
+					sf::Color color;
 
-	// for (std::list<std::list<t_blocks>>::iterator itr = map.begin(); itr != map.end(); itr++, y++)
-	// {
-	// 	std::list<t_blocks> tl = *itr;
-	// 	int x = 0;
-
-	// 	for (std::list<t_blocks>::iterator it = tl.begin(); it != tl.end(); it++, x++)
-	// 	{
-	// 		char r = 0, g = 0, b = 0;
-	// 		switch (*it)
-	// 		{
-	// 			case BLKNONE:
-	// 				r = 0; g = 0; b = 0;
-	// 				break;
-	// 			case WALL:
-	// 				r = 255; g = 0; b = 0;
-	// 				break;
-	// 			case HEAD:
-	// 				r = 0; g = 255; b = 0;
-	// 				break;
-	// 			case BODY:
-	// 				r = 0; g = 0; b = 255;
-	// 				break;
-	// 			case FRUIT:
-	// 				r = 255; g = 255; b = 255;
-	// 				break;
-	// 		}
-	// 		SDL_SetRenderDrawColor(_renderer, r, g, b, 0);
-	// 		for (int y1 = y * REALHEIGHTMULT; y1 < (y + 1) * REALHEIGHTMULT; y1++)
-	// 			for (int x1 = x * REALWIDTHMULT; x1 < (x + 1) * REALWIDTHMULT; x1++)
-	// 				SDL_RenderDrawPoint(_renderer, x1, y1);
-	// 	}
-	// }
-	// SDL_RenderPresent(_renderer);
+					color.r = r;
+					color.g = g;
+					color.b = b;
+					color.a = 255;
+					img.setPixel(x1, y1, color);
+				}
+			}
+		}
+	}
+	texture.update(img);
+	_win->draw(sprite);
+	_win->display();
 }
 
 void Graphics::update(void)
 {
-	// if (_win->isOpen())
-	// {
-	 	handleEvents();
-		// drawMap();
-	// }
+	handleEvents();
+	drawMap();
 }
 
 Graphics & Graphics::operator=(Graphics const & rhs)
