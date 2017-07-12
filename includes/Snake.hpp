@@ -6,7 +6,7 @@
 /*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:55:48 by svelhinh          #+#    #+#             */
-/*   Updated: 2017/07/11 14:55:48 by svelhinh         ###   ########.fr       */
+/*   Updated: 2017/07/11 17:40:05 by svelhinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,32 +21,24 @@
 
 class Snake
 {
-  public:
-    Snake(void);//constructeur
-    Snake(int h, int w);//constructeur
-    Snake(const char * str);        // ??? OSEF, juste pour le style coplient
-    Snake(Snake const & src);//constructeur par copie = avec comme parametre une instance de la clase declaree
-    virtual ~Snake( void );//destructeur
-    Snake & operator=( Snake const & nb);//operateur egal :  operateur d'assignation = mise a jour de l'instance courante
+public:
+	Snake(void);//constructeur
+	Snake(int h, int w);//constructeur
+	Snake(Snake const & src);//constructeur par copie = avec comme parametre une instance de la clase declaree
+	virtual ~Snake( void );//destructeur
+	Snake & operator=( Snake const & nb);//operateur egal :  operateur d'assignation = mise a jour de l'instance courante
 
-    //===========methode==========
-    void Setup();
-    void Logic();
-
+	//===========methode==========
+	void Setup();
+	void Logic();
 
 
-    //============attribut===============
-    bool gameOver;
-    int width;
-    int height;
-    float x, y;
-    int fruitX, fruitY, score;
-    std::vector<int> tailX, tailY;//on limite a 100 fruit max, faut pas deconner, tu vas mourir avant de tester plus que ca dans la correction
-    int nTail;
-    t_action dir;
 
-  private:
-
+	//============attribut===============
+	bool gameOver, speedX, speedY;
+	int width, height, x, y, fruitX, fruitY, score, nTail, timeX, timeY;
+	std::vector<int> tailX, tailY;//on limite a 100 fruit max, faut pas deconner, tu vas mourir avant de tester plus que ca dans la correction
+	t_action dir;
 };
 
 #endif

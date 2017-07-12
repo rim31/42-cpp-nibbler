@@ -6,7 +6,7 @@
 /*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:55:54 by svelhinh          #+#    #+#             */
-/*   Updated: 2017/07/11 14:55:55 by svelhinh         ###   ########.fr       */
+/*   Updated: 2017/07/12 13:41:35 by svelhinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,13 @@ void Game::inputHandler(void)
 			break;
 			// =====================
 		case UP:
-		case LEFT:
 		case DOWN:
+			if (snake->dir != guiHandler->guiInst->glib_action/* && snake->speedY*/)
+				snake->dir = guiHandler->guiInst->glib_action;
+			break;
+		case LEFT:
 		case RIGHT:
-			if (snake->dir != guiHandler->guiInst->glib_action)
+			if (snake->dir != guiHandler->guiInst->glib_action/* && snake->speedX*/)
 				snake->dir = guiHandler->guiInst->glib_action;
 			break;
 			// =====================
@@ -102,50 +105,50 @@ void Game::inputHandler(void)
 	}
 }
 
+#include <cmath>
+
 void	Game::Draw()
 {
 	std::list<std::list<t_blocks>>	map;
 
 	map.clear();
 
-	bool printable;	//variable pour savoir si on a deja affiché un truc
+	bool printed;	//variable pour savoir si on a deja affiché un truc
 
 	for (int y = 0; y < height; y++)
 	{
 		std::list<t_blocks> line;
 		for (int x = 0; x < width; x++)
 		{
-			printable = true;
+			printed = false;
 			if (x == snake->x && y == snake->y)
 			{
-				printable = false;
+				printed = true;
 				line.push_back(HEAD);
 			}
 			if (y == 0 || y == height - 1 || x == 0 || x == width - 1)
 			{
-			printable = false;
-			line.push_back(WALL);
+				printed = true;
+				line.push_back(WALL);
 			}
 			if (x == snake->fruitX && y == snake->fruitY)
 			{
-			printable = false;
-			line.push_back(FRUIT);
+				printed = true;
+				line.push_back(FRUIT);
 			}
 
 			for (int k = 0; k < snake->nTail; k++)
 			{
 				if (y == snake->tailY[k] && x == snake->tailX[k])
 				{
-					snake->tailX.push_back(x);
-					snake->tailY.push_back(y);
 					line.push_back(BODY);
 
-					// std::cout << snake->tailX[k] << " | " << snake->tailY[k] << " : " << snake->nTail << std::endl;
-					printable = false;
+					// std::cout << snake->tailX[0] << " , " << snake->tailY[0] << " | " << snake->tailX[1] << " , " << snake->tailY[1] << std::endl;
+					printed = true;
 				}
 			}
-			if (printable)
-			line.push_back(BLKNONE);
+			if (!printed)
+				line.push_back(BLKNONE);
 		}
 		map.push_back(line);
 	}
@@ -165,14 +168,29 @@ void Game::loop()
 			snake->Logic();
 			Draw();
 			guiHandler->guiInst->update();
+			if (snake->nTail <= 1)
+				usleep(1000 / 10 * 1000);
+			else if (snake->nTail <= 5)
+				usleep(1000 / 15 * 1000);
+			else if (snake->nTail <= 10)
+				usleep(1000 / 20 * 1000);
+			else if (snake->nTail <= 15)
+				usleep(1000 / 25 * 1000);
+			else if (snake->nTail <= 20)
+				usleep(1000 / 30 * 1000);
+			else if (snake->nTail <= 25)
+				usleep(1000 / 35 * 1000);
+			else if (snake->nTail <= 30)
+				usleep(1000 / 40 * 1000);
+			else if (snake->nTail <= 35)
+				usleep(1000 / 45 * 1000);
+			else if (snake->nTail <= 40)
+				usleep(1000 / 50 * 1000);
+			else if (snake->nTail <= 45)
+				usleep(1000 / 55 * 1000);
+			else
+				usleep(1000 / 60 * 1000);
 		}
 		// =============== vitesse ===========
-		if (snake->nTail <= 1)
-				usleep(1000 / 10 * 1000);
-		else if (snake->nTail <= 4)
-				usleep(1000 / 15 * 1000);
-		else
-				usleep(1000 / 25 * 1000);
-
 	}
 }
