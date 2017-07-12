@@ -6,7 +6,7 @@
 /*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:56:00 by svelhinh          #+#    #+#             */
-/*   Updated: 2017/07/11 14:56:00 by svelhinh         ###   ########.fr       */
+/*   Updated: 2017/07/12 15:17:44 by svelhinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int main(int argc, char **argv)
 		
 	std::string lib = argv[3];//		std::cout << argv[1] << argv[2] << argv[3] << std::endl;
 
-	if (std::atoi(argv[1]) < 10 || std::atoi(argv[1]) > 50 || std::atoi(argv[2])
-		< 10 || std::atoi(argv[2]) > 100)
-		printError("Bad entry : \n10<height<50 10<width<100 library(ncurses/sdl/sfml)");
+	if (std::atoi(argv[1]) < 10 || std::atoi(argv[1]) > 100 || std::atoi(argv[2])
+		< 10 || std::atoi(argv[2]) > 200)
+		printError("Bad entry : \n10<height<100 10<width<200 library(ncurses/sdl/sfml)");
 
 	std::string libpath;
 	std::string libsfml = "libs/libsfml/libsfml.so";
@@ -52,10 +52,10 @@ int main(int argc, char **argv)
 	}
 
 	Game *game;
-	if (libpath == libsdl)
+	if (libpath != libsfml)
 	{
 		game = new Game(std::atoi(argv[1]), std::atoi(argv[2]), libsfml);
-		game->guiHandler->guiInst->glib_action = LIB1;
+		game->guiHandler->guiInst->glib_action = (lib == "sdl" ? LIB1 : LIB2);
 	}
 	else
 		game = new Game(std::atoi(argv[1]), std::atoi(argv[2]), libpath);

@@ -6,7 +6,7 @@
 /*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:55:41 by svelhinh          #+#    #+#             */
-/*   Updated: 2017/07/11 14:55:41 by svelhinh         ###   ########.fr       */
+/*   Updated: 2017/07/12 15:06:54 by svelhinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ public:
 	virtual ~Game( void );//destructeur
 	Game & operator=( Game const & nb);//operateur egal :  operateur d'assignation = mise a jour de l'instance courante
 
-	int height;
-	int width;
+	int height, width;
+    bool pause;
 	GraphicsHandler	*guiHandler;
 
     //===========methodes==========

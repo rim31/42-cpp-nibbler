@@ -6,7 +6,7 @@
 /*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:55:31 by svelhinh          #+#    #+#             */
-/*   Updated: 2017/07/12 14:21:46 by svelhinh         ###   ########.fr       */
+/*   Updated: 2017/07/12 14:51:05 by svelhinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ void Graphics::handleEvents(void)
 			break;
 		case 'd':
 			glib_action = RIGHT;
+			break;
+		case 'p':
+			glib_action = PAUSE;
 			break;
 		case 27:
 			glib_action = QUIT;

@@ -6,7 +6,7 @@
 /*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:55:54 by svelhinh          #+#    #+#             */
-/*   Updated: 2017/07/12 14:42:34 by svelhinh         ###   ########.fr       */
+/*   Updated: 2017/07/12 15:16:55 by svelhinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ Game::Game (int h, int w, std::string libpath)
 	height = h;
 	width = w;
 	guiHandler->loadLibrary(libpath, w, h);
+	pause = false;
 
 	return;
 }
@@ -99,6 +100,10 @@ void Game::inputHandler(void)
 			std::cout << "Score : " << snake->score << std::endl;
 			delete snake;
 			exit(0);
+			break;
+		case PAUSE:
+			pause = (pause ? false : true);
+			guiHandler->guiInst->glib_action = NONE;
 			break;
 		case NONE:
 			break;
@@ -191,7 +196,8 @@ void Game::loop()
 
 		if (!snake->gameOver)
 		{
-			snake->Logic();
+			if (!pause)
+				snake->Logic();
 			Draw();
 			guiHandler->guiInst->update();
 			if (snake->nTail <= 1)

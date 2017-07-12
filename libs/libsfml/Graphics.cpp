@@ -6,7 +6,7 @@
 /*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:54:57 by svelhinh          #+#    #+#             */
-/*   Updated: 2017/07/12 14:21:30 by svelhinh         ###   ########.fr       */
+/*   Updated: 2017/07/12 14:56:38 by svelhinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,44 @@ void Graphics::handleEvents(void)
 
 	if (_win->pollEvent(ev))
 	{
-		if (ev.type == sf::Event::Closed)
-			glib_action = QUIT;
-		else if (ev.type == sf::Event::KeyPressed)
+		switch (ev.type)
 		{
-			if (ev.key.code == sf::Keyboard::Escape)
+			case sf::Event::Closed:
 				glib_action = QUIT;
-			else if (ev.key.code == sf::Keyboard::Num1)
-				glib_action = LIB1;
-			else if (ev.key.code == sf::Keyboard::Num2)
-				glib_action = LIB2;
-			else if (ev.key.code == sf::Keyboard::W)
-				glib_action = UP;
-			else if (ev.key.code == sf::Keyboard::S)
-				glib_action = DOWN;
-			else if (ev.key.code == sf::Keyboard::A)
-				glib_action = LEFT;
-			else if (ev.key.code == sf::Keyboard::D)
-				glib_action = RIGHT;
+				break;
+			case sf::Event::KeyPressed:
+				switch (ev.key.code)
+				{
+					case sf::Keyboard::Escape:
+						glib_action = QUIT;
+						break;
+					case sf::Keyboard::Num1:
+						glib_action = LIB1;
+						break;
+					case sf::Keyboard::Num2:
+						glib_action = LIB2;
+						break;
+					case sf::Keyboard::W:
+						glib_action = UP;
+						break;
+					case sf::Keyboard::A:
+						glib_action = LEFT;
+						break;
+					case sf::Keyboard::S:
+						glib_action = DOWN;
+						break;
+					case sf::Keyboard::D:
+						glib_action = RIGHT;
+						break;
+					case sf::Keyboard::P:
+						glib_action = PAUSE;
+						break;
+					default:
+						break;
+				}
+				break;
+			default:
+				break;
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:55:46 by svelhinh          #+#    #+#             */
-/*   Updated: 2017/07/12 14:16:04 by svelhinh         ###   ########.fr       */
+/*   Updated: 2017/07/12 14:50:07 by svelhinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ typedef enum		e_action
 	DOWN,
 	LEFT,
 	RIGHT,
-	QUIT
+	QUIT,
+	PAUSE
 }					t_action;
 
 class IGraphics

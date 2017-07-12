@@ -6,7 +6,7 @@
 /*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:55:17 by svelhinh          #+#    #+#             */
-/*   Updated: 2017/07/12 14:21:38 by svelhinh         ###   ########.fr       */
+/*   Updated: 2017/07/12 14:53:06 by svelhinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,16 @@ void Graphics::handleEvents(void)
 				case SDLK_d:
 					glib_action = RIGHT;
 					break;
+				case SDLK_p:
+					glib_action = PAUSE;
+					break;
 				case SDLK_ESCAPE:
 					glib_action = QUIT;
 					break;
 			}
+			break;
+		case SDL_QUIT:
+			glib_action = QUIT;
 			break;
 	}
 }
