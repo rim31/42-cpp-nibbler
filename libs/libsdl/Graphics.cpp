@@ -6,7 +6,7 @@
 /*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:55:17 by svelhinh          #+#    #+#             */
-/*   Updated: 2017/07/11 14:58:32 by svelhinh         ###   ########.fr       */
+/*   Updated: 2017/07/12 14:21:38 by svelhinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ void Graphics::drawMap(void)
 					r = 0; g = 0; b = 0;
 					break;
 				case WALL:
+				case EXPLOSION2:
 					r = 255; g = 0; b = 0;
 					break;
 				case HEAD:
@@ -142,6 +143,7 @@ void Graphics::drawMap(void)
 					r = 0; g = 255; b = 255;
 					break;
 				case FRUIT:
+				case EXPLOSION:
 					r = 255; g = 255; b = 255;
 					break;
 			}

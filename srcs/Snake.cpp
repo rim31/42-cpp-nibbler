@@ -6,7 +6,7 @@
 /*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:56:02 by svelhinh          #+#    #+#             */
-/*   Updated: 2017/07/12 13:31:40 by svelhinh         ###   ########.fr       */
+/*   Updated: 2017/07/12 14:44:53 by svelhinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,25 @@ void Snake::Setup()
 	dir = RIGHT;
 	x = width / 2;
 	y = height / 2;
-	fruitX = 3 + rand() % (width - 5);
-	fruitY = 3 + rand() % (width - 5);
+	RandomFruit();
 	score = 0;
 	nTail = 0;
+}
+
+void Snake::RandomFruit()
+{
+	bool randomFruit = true;
+	while (randomFruit)
+	{
+		randomFruit = false;
+		fruitX = 3 + rand() % (width - 5);
+		fruitY = 3 + rand() % (height - 5);
+		for (int i = 1; i <= nTail; i++)
+		{
+			if (fruitX == tailX[i] && fruitY == tailY[i])
+				randomFruit = true;
+		}
+	}
 }
 
 void Snake::Logic()
@@ -115,8 +130,8 @@ void Snake::Logic()
 	if (x == fruitX && y == fruitY)
 	{
 		score++;
-		fruitX = 3 + rand() % (width - 5);
-		fruitY = 3 + rand() % (height - 5);
+		explosion = true;
+		RandomFruit();
 		tailX.push_back(-1);
 		tailY.push_back(-1);
 		nTail++;

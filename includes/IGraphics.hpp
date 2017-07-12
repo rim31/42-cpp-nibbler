@@ -6,7 +6,7 @@
 /*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:55:46 by svelhinh          #+#    #+#             */
-/*   Updated: 2017/07/11 14:55:46 by svelhinh         ###   ########.fr       */
+/*   Updated: 2017/07/12 14:16:04 by svelhinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ typedef enum		e_blocks
 	WALL,
 	HEAD,
 	BODY,
-	FRUIT
+	FRUIT,
+	EXPLOSION,
+	EXPLOSION2,	
 }					t_blocks;
 
 typedef enum		e_action

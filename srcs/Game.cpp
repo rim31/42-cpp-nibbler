@@ -6,7 +6,7 @@
 /*   By: svelhinh <svelhinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:55:54 by svelhinh          #+#    #+#             */
-/*   Updated: 2017/07/12 13:41:35 by svelhinh         ###   ########.fr       */
+/*   Updated: 2017/07/12 14:42:34 by svelhinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,34 +121,60 @@ void	Game::Draw()
 		for (int x = 0; x < width; x++)
 		{
 			printed = false;
-			if (x == snake->x && y == snake->y)
+
+			if (x == static_cast<int>(snake->tailX[0]) && y == static_cast<int>(snake->tailY[0]))
 			{
-				printed = true;
 				line.push_back(HEAD);
+				continue;
 			}
 			if (y == 0 || y == height - 1 || x == 0 || x == width - 1)
 			{
-				printed = true;
 				line.push_back(WALL);
+				continue;
 			}
 			if (x == snake->fruitX && y == snake->fruitY)
 			{
-				printed = true;
 				line.push_back(FRUIT);
+				continue;
 			}
 
-			for (int k = 0; k < snake->nTail; k++)
+			if (x >= static_cast<int>(snake->tailX[0]) - 2 && x <= static_cast<int>(snake->tailX[0]) + 2
+				&& y >= static_cast<int>(snake->tailY[0]) - 2 && y <= static_cast<int>(snake->tailY[0]) + 2 && snake->explosion2)
 			{
-				if (y == snake->tailY[k] && x == snake->tailX[k])
-				{
-					line.push_back(BODY);
+				printed = true;
+				line.push_back(EXPLOSION2);
+			}
+			if (x == static_cast<int>(snake->tailX[0]) + 2 && y == static_cast<int>(snake->tailY[0]) + 2 && snake->explosion2)
+				snake->explosion2 = false;
+			if (!printed && x >= static_cast<int>(snake->tailX[0]) - 1 && x <= static_cast<int>(snake->tailX[0]) + 1
+				&& y >= static_cast<int>(snake->tailY[0]) - 1 && y <= static_cast<int>(snake->tailY[0]) + 1 && snake->explosion)
+			{
+				printed = true;
+				line.push_back(EXPLOSION);
+			}
+			if (x == static_cast<int>(snake->tailX[0]) + 1 && y == static_cast<int>(snake->tailY[0]) + 1 && snake->explosion)
+			{
+				snake->explosion = false;
+				snake->explosion2 = true;
+			}
 
-					// std::cout << snake->tailX[0] << " , " << snake->tailY[0] << " | " << snake->tailX[1] << " , " << snake->tailY[1] << std::endl;
-					printed = true;
+			if (!printed)
+			{
+				for (int k = 1; k <= snake->nTail; k++)
+				{
+					if (y == static_cast<int>(snake->tailY[k]) && x == static_cast<int>(snake->tailX[k]))
+					{
+						line.push_back(BODY);
+
+						// std::cout << static_cast<int>(snake->tailX[0]) << " , " << static_cast<int>(snake->tailY[0]) << " | " << snake->tailX[1] << " , " << snake->tailY[1] << std::endl;
+						printed = true;
+					}
 				}
 			}
-			if (!printed)
-				line.push_back(BLKNONE);
+			if (printed)
+				continue;
+
+			line.push_back(BLKNONE);
 		}
 		map.push_back(line);
 	}
