@@ -5,4 +5,4 @@ stty echo # Remise en place de l'echo
 stty onlcr # Remise en place du retour chariot
 
 export DYLD_FALLBACK_FRAMEWORK_PATH="libs/libsfml/SFML/extlibs/libs-osx/Frameworks"
-./bin/nibbler $1 $2 $3
+./bin/nibbler $1 $2 $3 $4
