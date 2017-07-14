@@ -11,6 +11,13 @@ play and change the library graphic instantanely (information about its forbidde
 make
 ./run 42 42 sdl
 ```
+# play
+WASD (qwerty keybord)
+pause : P
+colors
+switch library : 1 2 3 (above f1 f2 f3)
+speed increasing
+ESC to quit
 
 
 
