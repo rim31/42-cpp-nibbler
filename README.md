@@ -6,6 +6,14 @@ play and change the library graphic instantanely (information about its forbidde
 
 ## SNAKE : game in 3 dynamic libraries
 
+# RUN
+```C++
+make
+./run 42 42 sdl
+```
+
+
+
 ![alt text](https://github.com/rim31/42-cpp-nibbler/blob/master/ScreenShot%20NCURSES.png)
 ![alt text](https://github.com/rim31/42-cpp-nibbler/blob/master/ScreenShot%20SDL.png)
-![alt text](https://github.com/rim31/42-cpp-nibbler/blob/master/ScreenShot%20SFML.png)
+![alt text](https://github.com/rim31/42-cpp-nibbler/blob/master/ScreenShotSFML.png)
