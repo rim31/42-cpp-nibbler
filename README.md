@@ -19,8 +19,6 @@ switch library : 1 2 3 (above f1 f2 f3)
 speed increasing
 ESC to quit
 
-
-
-![alt text](https://github.com/rim31/42-cpp-nibbler/blob/master/ScreenShot%20NCURSES.png)
 ![alt text](https://github.com/rim31/42-cpp-nibbler/blob/master/ScreenShot%20SDL.png)
 ![alt text](https://github.com/rim31/42-cpp-nibbler/blob/master/ScreenShotSFML.png)
+![alt text](https://github.com/rim31/42-cpp-nibbler/blob/master/ScreenShot%20NCURSES.png)
